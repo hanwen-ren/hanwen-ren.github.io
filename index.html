@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: center
+	}
+
+	img {
+		border: 4px solid #555;
+	}
+
+	.text {
+		font-size: 15px;
+		margin-left: 30px;
+		margin-right: 30px;
+	}
+
+	table.fixed {
+		table-layout:fixed;
+		width:900px;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+	.social-icon {
+		color: #aaaaaa;
+		transition: color 0.4s;
+	}
+
+	.social-icon:hover {
+		color:#333333;
+	}
+</style>
+<body>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+	<head>
+		<title> HR </title>
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+	</head>
+
+<table class="fixed">
+<tr>
+<td>
+	<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto">
+		<tr>
+			<td style="padding:2.5%;width:40%;max-width:40%">
+		<!--<img style="width:15%;max-width:15%" alt="profile" src="./images/HR_profile.jpeg" 
+							 onmouseover="this.src='./images/bat.jpeg'" 
+							 onmouseout="this.src='./images/HR_profile.jpeg'">-->
+			<img style="width:70%;max-width:70% alt="profile" src="./images/HR_profile.jpeg"">
+			</td>
+			<td style="padding:2.5%;width:60%;vertical-align:middle">
+				<h1>Hanwen Ren</h1>
+				<p>
+					I am a Ph.D. student in the <a href="https://www.cs.purdue.edu">Department of Computer Science</a> at <a href="https://www.purdue.edu">Purdue University</a>. Currently, I am working as a Research Assistant at Purdue <a href="https://corallab.net">Cognitive Robot Autonomy & Learning (CoRAL) Lab</a> directed by Prof. <a href = "https://qureshiahmed.github.io">Ahmed H. Qureshi</a>.
+				</p>
+				<p>
+					Before coming to Purdue, I got my B.S. from the <a href="https://www.ji.sjtu.edu.cn">UM-SJTU Joint Institute</a> at <a href="https://en.sjtu.edu.cn">Shanghai Jiao Tong University</a> and Sc.M. from the <a href="https://engineering.brown.edu">Electrical Sciences & Computer Engineering Department</a> at <a href="https://www.brown.edu">Brown University</a>.
+				</p>
+				<p style="text-align:center">
+					Email: ren221 AT purdue DOT edu
+				<p style="text-align:center">
+					<a href="https://scholar.google.com/citations?user=Vv8rth8AAAAJ&hl=en" target='_blank' class="social-icon"><ion-icon size="large" name="school-outline"></ion-icon></a>
+					&nbsp;&nbsp;
+					<a href="https://www.linkedin.com/in/hanwen-ren-a44922100" target='_blank' class="social-icon"><ion-icon size="large" name="logo-linkedin"></ion-icon></a>
+					&nbsp;&nbsp;
+					<a href="https://github.com/xxxxhrxxxx" target='_blank' class="social-icon"><ion-icon size="large" name="logo-github"></ion-icon></a>
+					&nbsp;&nbsp;
+					<a href="https://www.linkedin.com/in/hanwen-ren-a44922100" target='_blank' class="social-icon"><ion-icon size="large" name="logo-youtube"></ion-icon></a>
+					&nbsp;&nbsp;
+					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="logo-instagram"></ion-icon></a>
+			</td>
+		</tr>
+	</table>
+	<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto">
+		<tbody>
+			<tr>
+				<td style="padding:2.5%;width:100%;vertical-align:middle">
+					<h2>Research</h2>
+					<p>
+						My research focuses on efficient and high-quality robot active visual perception for constrained environments, robot task and motion planning in confined spaces, 
+						and robotic systems with human-in-the-loop.
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table style="width:100%;border:0px;border-spacing:0px;boarder-collapse:separate;margin-right:auto;margin-left:auto;">
+		<tbody>
+
+			<!--2D MS-MCTS Project-->
+			<tr>
+				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
+				<img src="./images/2D_MCTS_Exp4.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
+				</td>
+				<td style='padding:2.5%;width:75%;vertical-align:middle'>
+					<h3>Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</h3>
+					<br>
+					<strong>Hanwen Ren*</strong>, Ahmed H. Qureshi<br>
+					<em>Arxiv</em><br>
+					<a href="https://arxiv.org/abs/2305.17175">paper</a>
+					<p>
+						In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality 
+						plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object
+						rearrangement instances of diverse difficulty levels.
+					</p>
+				</td>
+			</tr>
+
+			<!--Neural Grasping Project-->
+			<tr>
+				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
+				<img src="./images/Neural_Grasping_Exp1.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
+				</td>
+				<td style='padding:2.5%;width:75%;vertical-align:middle'>
+					<h3>Neural Rearrangement Planning for Object Retrieval from Confined Spaces Perceivable by Robot's In-hand RGB-D Sensor</h3>
+					<br>
+					<strong>Hanwen Ren*</strong>, Ahmed H. Qureshi<br>
+					<em>Arxiv</em><br>
+					<p>
+						This paper presents a neural network-based object retrieval framework that efficiently performs rearrangement planning of unknown, arbitrary objects in confined spaces to 
+						retrieve the desired one. Our method demonstrates high performance by ensuring the relocation of non-target objects clear the way for the robot path homotopy to the given 
+						target object, thus significantly increasing the underlying motion planner's efficiency.
+					</p>
+				</td>
+			</tr>
+
+      <!--Active Neual Sensing Project-->
+			<tr>
+				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
+				<img src="./images/Active_Neural_Sensing.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
+				</td>
+				<td style='padding:2.5%;width:75%;vertical-align:middle'>
+					<h3>Robot Active Neural Sensing and Planning in Unknwon Cluttered Environments</h3>
+					<br>
+					<strong>Hanwen Ren*</strong>, Ahmed H. Qureshi<br>
+					<em>IEEE Transactions on Robotics</em> 39 (4), 2738-2750<br>
+					<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10101696">paper</a>
+					<p>
+						In this work, we present the active neural sensing approach that generates the kinematically feasible viewpoint sequences for the robot manipulator 
+						with an in-hand camera to gather the number number of observations needed to reconstruct the underlying unknown cluttered environments. Our results
+						exhibit high performance compared to traditional baselines regarding the number of viewpoints, scene coverage success rates, and planning time.
+					</p>
+				</td>
+			</tr>
+
+			<!--Cograsp Project-->
+			<tr>
+				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
+				<img src="./images/Cograsp.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
+				</td>
+				<td style='padding:2.5%;width:75%;vertical-align:middle'>
+					<h3>Cograsp: 6-DOF Grasp Generation for Human-Robot Collaboration</h3>
+					<br>
+					Abhinav K. Keshari*, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
+					<em>IEEE International Conference on Robotics and Automation (ICRA)</em>, 2023<br>
+					<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10160623">paper</a>
+					<p>
+						In this paper, we propose a novel, deep neural network-based method called CoGrasp that enables robots to grasp various objects in a human-aware
+						manner by contextualizing human preference. Our user study indicates that our approach allows safe, natural, and social-aware human-robot co-grasping experience.
+					</p>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</td>
+</tr>
+</table>
+
+
+</body>
+</html>
+
