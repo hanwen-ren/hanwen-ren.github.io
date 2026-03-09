@@ -69,13 +69,13 @@
 				<p style="text-align:center">
 					Email: ren221 AT purdue DOT edu
 				<p style="text-align:center">
-					<a href="https://scholar.google.com/citations?user=Vv8rth8AAAAJ&hl=en" target='_blank' class="social-icon"><ion-icon size="large" name="school-outline"></ion-icon></a>
+					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="school-outline"></ion-icon></a>
 					&nbsp;&nbsp;
-					<a href="https://www.linkedin.com/in/hanwen-ren-a44922100" target='_blank' class="social-icon"><ion-icon size="large" name="logo-linkedin"></ion-icon></a>
+					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="logo-linkedin"></ion-icon></a>
 					&nbsp;&nbsp;
-					<a href="https://github.com/xxxxhrxxxx" target='_blank' class="social-icon"><ion-icon size="large" name="logo-github"></ion-icon></a>
+					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="logo-github"></ion-icon></a>
 					&nbsp;&nbsp;
-					<a href="https://www.linkedin.com/in/hanwen-ren-a44922100" target='_blank' class="social-icon"><ion-icon size="large" name="logo-youtube"></ion-icon></a>
+					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="logo-youtube"></ion-icon></a>
 					&nbsp;&nbsp;
 					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="logo-instagram"></ion-icon></a>
 			</td>
@@ -87,8 +87,7 @@
 				<td style="padding:2.5%;width:100%;vertical-align:middle">
 					<h2>Research</h2>
 					<p>
-						My research focuses on efficient and high-quality robot active visual perception for constrained environments, robot task and motion planning in confined spaces, 
-						and robotic systems with human-in-the-loop.
+						My research explores how robots can intelligently interact with complex environments, focusing on active visual perception, object rearrangement planning, and object manipulation in cluttered environments. I develop learning- and planning-based methods that allow robots to reason about their surroundings and perform multi-step manipulation tasks efficiently.
 					</p>
 				</td>
 			</tr>
@@ -98,10 +97,47 @@
 	<table style="width:100%;border:0px;border-spacing:0px;boarder-collapse:separate;margin-right:auto;margin-left:auto;">
 		<tbody>
 
-			<!--2D MS-MCTS Project-->
+		<!--CAM-MCTS-->
 			<tr>
 				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
-				<img src="./images/2D_MCTS_Exp4.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
+				<img src="./images/CAM_MCTS_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
+				</td>
+				<td style='padding:2.5%;width:75%;vertical-align:middle'>
+					<h3>Multi-Agent Monte Carlo Tree Search for Makespan-Efficient Object Rearrangement in Cluttered Spaces</h3>
+					<br>
+					<strong>Hanwen Ren</strong>, Junyoung Kim, Aathman Tharmasanthiran and Ahmed H. Qureshi<br>
+					<a href="https://arxiv.org/abs/2602.02411">[paper]</a>
+					<p>
+							We introduce CAM-MCTS (Centralized Asynchronous Multi-Agent Monte Carlo Tree Search), a planning framework for collaborative object rearrangement in cluttered environments. CAM-MCTS enables multiple robots to coordinate manipulation actions while optimizing the overall task makespan. The method combines centralized planning with asynchronous execution so agents can begin new actions without waiting for global synchronization, reducing idle time and improving efficiency. The performance are verified in both simulation and real-robot systems.
+					</p>
+				</td>
+			</tr>
+
+
+
+		<!--Integrated Active Sensing-->
+			<tr>
+				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
+				<img src="./images/MAS_OR_MCTS_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
+				</td>
+				<td style='padding:2.5%;width:75%;vertical-align:middle'>
+					<h3>Integrating Active Sensing and Rearrangement Planning for Efficient Object Retrieval from Unknwon, Confined, Cluttered Environments</h3>
+					<br>
+					Junyoung Kim, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
+					<a href="https://ieeexplore.ieee.org/abstract/document/11128147">[paper]</a>
+					<p>
+							We introduce an integrated framework that smartly combines multi-stage active sensing and MCTS-based retrieval planning for object retrieval in unknown, cluttered, confined environments. Our OR-MCTS planner relocates task-blocking objects while guiding sensing toward critical unseen regions. Experiments in simulation and real robots show improved success rate and efficiency over SOTA methods.
+					</p>
+				</td>
+			</tr>
+
+
+
+
+		<!--POM_TODO-->
+			<tr>
+				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
+				<img src="./images/POM_NeFT_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
 				</td>
 				<td style='padding:2.5%;width:75%;vertical-align:middle'>
 					<h3>Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</h3>
@@ -109,6 +145,49 @@
 					<strong>Hanwen Ren*</strong>, Ahmed H. Qureshi<br>
 					<em>Arxiv</em><br>
 					<a href="https://arxiv.org/abs/2305.17175">paper</a>
+					<p>
+						In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality 
+						plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object
+						rearrangement instances of diverse difficulty levels.
+					</p>
+				</td>
+			</tr>
+
+
+
+		<!--Language Guided Active Sensing Project_TODO-->
+			<tr>
+				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
+				<img src="./images/NL_Active_Sensing_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
+				</td>
+				<td style='padding:2.5%;width:75%;vertical-align:middle'>
+					<h3>Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</h3>
+					<br>
+					<strong>Hanwen Ren*</strong>, Ahmed H. Qureshi<br>
+					<em>Arxiv</em><br>
+					<a href="https://arxiv.org/abs/2305.17175">paper</a>
+					<p>
+						In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality 
+						plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object
+						rearrangement instances of diverse difficulty levels.
+					</p>
+				</td>
+			</tr>
+
+
+
+
+			<!--2D MS-MCTS Project-->
+			<tr>
+				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
+				<img src="./images/MS_MCTS_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
+				</td>
+				<td style='padding:2.5%;width:75%;vertical-align:middle'>
+					<h3>Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</h3>
+					<br>
+					<strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
+					<em>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2024<br>
+					<a href="https://ieeexplore.ieee.org/abstract/document/10801607">[paper]</a>
 					<p>
 						In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality 
 						plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object
@@ -125,8 +204,9 @@
 				<td style='padding:2.5%;width:75%;vertical-align:middle'>
 					<h3>Neural Rearrangement Planning for Object Retrieval from Confined Spaces Perceivable by Robot's In-hand RGB-D Sensor</h3>
 					<br>
-					<strong>Hanwen Ren*</strong>, Ahmed H. Qureshi<br>
-					<em>Arxiv</em><br>
+					<strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
+					<em>IEEE International Conference on Robotics and Automation (ICRA)</em>, 2024<br>
+					<a href="https://ieeexplore.ieee.org/abstract/document/10610092">[paper]</a>
 					<p>
 						This paper presents a neural network-based object retrieval framework that efficiently performs rearrangement planning of unknown, arbitrary objects in confined spaces to 
 						retrieve the desired one. Our method demonstrates high performance by ensuring the relocation of non-target objects clear the way for the robot path homotopy to the given 
@@ -138,14 +218,14 @@
       <!--Active Neual Sensing Project-->
 			<tr>
 				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
-				<img src="./images/Active_Neural_Sensing.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
+				<img src="./images/Active_Sensing_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
 				</td>
 				<td style='padding:2.5%;width:75%;vertical-align:middle'>
 					<h3>Robot Active Neural Sensing and Planning in Unknwon Cluttered Environments</h3>
 					<br>
-					<strong>Hanwen Ren*</strong>, Ahmed H. Qureshi<br>
+					<strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
 					<em>IEEE Transactions on Robotics</em> 39 (4), 2738-2750<br>
-					<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10101696">paper</a>
+					<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10101696">[paper]</a>
 					<p>
 						In this work, we present the active neural sensing approach that generates the kinematically feasible viewpoint sequences for the robot manipulator 
 						with an in-hand camera to gather the number number of observations needed to reconstruct the underlying unknown cluttered environments. Our results
@@ -162,9 +242,9 @@
 				<td style='padding:2.5%;width:75%;vertical-align:middle'>
 					<h3>Cograsp: 6-DOF Grasp Generation for Human-Robot Collaboration</h3>
 					<br>
-					Abhinav K. Keshari*, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
+					Abhinav K. Keshari, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
 					<em>IEEE International Conference on Robotics and Automation (ICRA)</em>, 2023<br>
-					<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10160623">paper</a>
+					<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10160623">[paper]</a>
 					<p>
 						In this paper, we propose a novel, deep neural network-based method called CoGrasp that enables robots to grasp various objects in a human-aware
 						manner by contextualizing human preference. Our user study indicates that our approach allows safe, natural, and social-aware human-robot co-grasping experience.
