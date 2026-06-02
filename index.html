@@ -1,264 +1,355 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <title>Hanwen Ren</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <style>
+    :root {
+      --bg:        #f6f2eb;
+      --ink:       #1b1712;
+      --ink2:      #56504a;
+      --ink3:      #a09890;
+      --accent:    #7a3520;
+      --accentlt:  #b86b4e;
+      --rule:      #dbd3c6;
+      --display:   'Playfair Display', Georgia, serif;
+      --body:      'Lora', Georgia, serif;
+      --mono:      'JetBrains Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 15.5px;
+      line-height: 1.78;
+      font-weight: 400;
+    }
+    /* thick top rule */
+    body::before {
+      content: '';
+      display: block;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accentlt) 50%, var(--accent) 100%);
+    }
 
-<style>
-	.container {
-		display: flex;
-		align-items: center;
-		justify-content: center
-	}
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s; }
+    a:hover { border-color: var(--accentlt); }
 
-	img {
-		border: 4px solid #555;
-	}
+    .page { max-width: 960px; margin: 0 auto; padding: 60px 28px 110px; }
 
-	.text {
-		font-size: 15px;
-		margin-left: 30px;
-		margin-right: 30px;
-	}
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 195px 1fr;
+      gap: 50px;
+      align-items: start;
+      padding-bottom: 54px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 54px;
+      animation: rise .7s .05s ease both;
+    }
+    .photo-wrap { position: relative; }
+    .photo-wrap img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--rule);
+      filter: sepia(10%) contrast(1.04);
+      transition: filter .4s;
+    }
+    .photo-wrap:hover img { filter: sepia(0%) contrast(1.07); }
+    /* offset decorative border */
+    .photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 8px -8px -8px 8px;
+      border: 1.5px solid var(--accentlt);
+      opacity: .4;
+      z-index: -1;
+      pointer-events: none;
+    }
 
-	table.fixed {
-		table-layout:fixed;
-		width:900px;
-		margin-left:auto;
-		margin-right:auto;
-	}
+    .hero-info .kicker {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .hero-info h1 {
+      font-family: var(--display);
+      font-size: 2.7rem;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.08;
+      margin-bottom: 22px;
+    }
+    .hero-info p { color: var(--ink2); font-size: .94rem; margin-bottom: 13px; }
+    .email-line {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--ink3);
+      letter-spacing: .05em;
+      margin: 18px 0 14px;
+    }
+    .email-line strong { color: var(--ink2); }
+    .socials { display: flex; gap: 14px; }
+    .socials a { color: var(--ink3); border: none; display: flex; transition: color .25s; }
+    .socials a:hover { color: var(--accent); }
 
-	.social-icon {
-		color: #aaaaaa;
-		transition: color 0.4s;
-	}
+    /* ── RESEARCH INTRO ── */
+    .sec-label {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .sec-title {
+      font-family: var(--display);
+      font-size: 1.55rem;
+      font-style: italic;
+      font-weight: 400;
+      margin-bottom: 14px;
+    }
+    .research-blurb {
+      font-size: .93rem;
+      color: var(--ink2);
+      max-width: 660px;
+      line-height: 1.82;
+      margin-bottom: 54px;
+    }
 
-	.social-icon:hover {
-		color:#333333;
-	}
-</style>
+    /* ── PAPERS ── */
+    .papers { display: flex; flex-direction: column; }
+
+    .paper {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 30px;
+      padding: 34px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: center;
+      animation: rise .55s ease both;
+    }
+    .paper:nth-child(1){animation-delay:.12s}
+    .paper:nth-child(2){animation-delay:.19s}
+    .paper:nth-child(3){animation-delay:.26s}
+    .paper:nth-child(4){animation-delay:.33s}
+    .paper:nth-child(5){animation-delay:.40s}
+    .paper:nth-child(6){animation-delay:.47s}
+    .paper:nth-child(7){animation-delay:.54s}
+    .paper:nth-child(8){animation-delay:.61s}
+
+    .thumb { overflow: hidden; background: var(--rule); }
+    .thumb img {
+      width: 100%; display: block;
+      filter: saturate(.8);
+      transition: transform .5s ease, filter .4s;
+    }
+    .paper:hover .thumb img { transform: scale(1.05); filter: saturate(1.05); }
+
+    .pnum {
+      font-family: var(--mono);
+      font-size: .66rem;
+      letter-spacing: .1em;
+      color: var(--ink3);
+      margin-bottom: 7px;
+    }
+    .ptitle {
+      font-family: var(--display);
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.33;
+      margin-bottom: 7px;
+    }
+    .authors {
+      font-size: .8rem;
+      font-style: italic;
+      color: var(--ink3);
+      margin-bottom: 3px;
+    }
+    .authors strong { color: var(--accent); font-style: normal; font-weight: 600; }
+    .venue {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .04em;
+      color: var(--ink2);
+      margin-bottom: 10px;
+    }
+    .venue.conf { color: var(--accent); }
+    .abstract {
+      font-size: .83rem;
+      color: var(--ink2);
+      line-height: 1.72;
+      margin-bottom: 11px;
+    }
+    .plink {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .08em;
+      color: var(--accent);
+      border-bottom: 1px solid var(--accentlt);
+      padding-bottom: 1px;
+      transition: opacity .2s;
+    }
+    .plink:hover { opacity: .65; }
+
+    @keyframes rise { from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:translateY(0)} }
+
+    @media(max-width:780px){
+      .paper{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .hero{grid-template-columns:1fr}
+      .photo-wrap{max-width:155px}
+    }
+  </style>
+</head>
 <body>
-	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-	<head>
-		<title> HR </title>
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/site.webmanifest">
-		<meta name="msapplication-TileColor" content="#da532c">
-		<meta name="theme-color" content="#ffffff">
-	</head>
+<div class="page">
 
-<table class="fixed">
-<tr>
-<td>
-	<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto">
-		<tr>
-			<td style="padding:2.5%;width:40%;max-width:40%">
-		<!--<img style="width:15%;max-width:15%" alt="profile" src="./images/HR_profile.jpeg" 
-							 onmouseover="this.src='./images/bat.jpeg'" 
-							 onmouseout="this.src='./images/HR_profile.jpeg'">-->
-			<img style="width:70%;max-width:70% alt="profile" src="./images/HR_profile.jpeg"">
-			</td>
-			<td style="padding:2.5%;width:60%;vertical-align:middle">
-				<h1>Hanwen Ren</h1>
-				<p>
-					I am a Ph.D. student in the <a href="https://www.cs.purdue.edu">Department of Computer Science</a> at <a href="https://www.purdue.edu">Purdue University</a>. Currently, I am working as a Research Assistant at Purdue <a href="https://corallab.net">Cognitive Robot Autonomy & Learning (CoRAL) Lab</a> directed by Prof. <a href = "https://qureshiahmed.github.io">Ahmed H. Qureshi</a>.
-				</p>
-				<p>
-					Before coming to Purdue, I got my B.S. from the <a href="https://www.ji.sjtu.edu.cn">UM-SJTU Joint Institute</a> at <a href="https://en.sjtu.edu.cn">Shanghai Jiao Tong University</a> and Sc.M. from the <a href="https://engineering.brown.edu">Electrical Sciences & Computer Engineering Department</a> at <a href="https://www.brown.edu">Brown University</a>.
-				</p>
-				<p style="text-align:center">
-					Email: ren221 AT purdue DOT edu
-				<p style="text-align:center">
-					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="school-outline"></ion-icon></a>
-					&nbsp;&nbsp;
-					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="logo-linkedin"></ion-icon></a>
-					&nbsp;&nbsp;
-					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="logo-github"></ion-icon></a>
-					&nbsp;&nbsp;
-					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="logo-youtube"></ion-icon></a>
-					&nbsp;&nbsp;
-					<a href="https://google.com" target='_blank' class="social-icon"><ion-icon size="large" name="logo-instagram"></ion-icon></a>
-			</td>
-		</tr>
-	</table>
-	<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto">
-		<tbody>
-			<tr>
-				<td style="padding:2.5%;width:100%;vertical-align:middle">
-					<h2>Research</h2>
-					<p>
-						My research explores how robots can intelligently interact with complex environments, focusing on active visual perception, object rearrangement planning, and object manipulation in cluttered environments. I develop learning- and planning-based methods that allow robots to reason about their surroundings and perform multi-step manipulation tasks efficiently.
-					</p>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="photo-wrap">
+      <img src="./images/HR_profile.jpeg" alt="Hanwen Ren"
+           onmouseover="this.src='./images/bat.jpeg'"
+           onmouseout="this.src='./images/HR_profile.jpeg'">
+    </div>
+    <div class="hero-info">
+      <div class="kicker">Ph.D. Candidate · Robotics &amp; AI</div>
+      <h1>Hanwen Ren</h1>
+      <p>I am a Ph.D. student in the <a href="https://www.cs.purdue.edu">Department of Computer Science</a> at <a href="https://www.purdue.edu">Purdue University</a>. Currently, I am working as a Research Assistant at Purdue <a href="https://corallab.net">Cognitive Robot Autonomy &amp; Learning (CoRAL) Lab</a> directed by Prof. <a href="https://qureshiahmed.github.io">Ahmed H. Qureshi</a>.</p>
+      <p>Before coming to Purdue, I got my B.S. from the <a href="https://www.ji.sjtu.edu.cn">UM-SJTU Joint Institute</a> at <a href="https://en.sjtu.edu.cn">Shanghai Jiao Tong University</a> and Sc.M. from the <a href="https://engineering.brown.edu">Electrical Sciences &amp; Computer Engineering Department</a> at <a href="https://www.brown.edu">Brown University</a>.</p>
+      <div class="email-line"><strong>ren221</strong> AT purdue DOT edu</div>
+      <div class="socials">
+        <a href="https://google.com" target="_blank"><ion-icon size="large" name="school-outline"></ion-icon></a>
+        <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-linkedin"></ion-icon></a>
+        <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-github"></ion-icon></a>
+        <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-youtube"></ion-icon></a>
+        <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-instagram"></ion-icon></a>
+      </div>
+    </div>
+  </header>
 
-	<table style="width:100%;border:0px;border-spacing:0px;boarder-collapse:separate;margin-right:auto;margin-left:auto;">
-		<tbody>
+  <!-- RESEARCH -->
+  <div class="sec-label">Research</div>
+  <div class="sec-title">Intelligent Robot Interaction &amp; Planning</div>
+  <p class="research-blurb">My research explores how robots can intelligently interact with complex environments, focusing on active visual perception, object rearrangement planning, and object manipulation in cluttered environments. I develop learning- and planning-based methods that allow robots to reason about their surroundings and perform multi-step manipulation tasks efficiently.</p>
 
-		<!--CAM-MCTS-->
-			<tr>
-				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
-				<img src="./images/CAM_MCTS_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
-				</td>
-				<td style='padding:2.5%;width:75%;vertical-align:middle'>
-					<h3>Multi-Agent Monte Carlo Tree Search for Makespan-Efficient Object Rearrangement in Cluttered Spaces</h3>
-					<br>
-					<strong>Hanwen Ren</strong>, Junyoung Kim, Aathman Tharmasanthiran and Ahmed H. Qureshi<br>
-					<a href="https://arxiv.org/abs/2602.02411">[paper]</a>
-					<p>
-							We introduce CAM-MCTS (Centralized Asynchronous Multi-Agent Monte Carlo Tree Search), a planning framework for collaborative object rearrangement in cluttered environments. CAM-MCTS enables multiple robots to coordinate manipulation actions while optimizing the overall task makespan. The method combines centralized planning with asynchronous execution so agents can begin new actions without waiting for global synchronization, reducing idle time and improving efficiency. The performance are verified in both simulation and real-robot systems.
-					</p>
-				</td>
-			</tr>
+  <!-- PUBLICATIONS -->
+  <div class="sec-label" style="margin-bottom:18px">Publications</div>
+  <div class="papers">
 
+    <div class="paper">
+      <div class="thumb"><img src="./images/CAM_MCTS_example.gif" alt="CAM-MCTS"></div>
+      <div>
+        <div class="pnum">01</div>
+        <div class="ptitle">Multi-Agent Monte Carlo Tree Search for Makespan-Efficient Object Rearrangement in Cluttered Spaces</div>
+        <div class="authors"><strong>Hanwen Ren</strong>, Junyoung Kim, Aathman Tharmasanthiran and Ahmed H. Qureshi</div>
+        <div class="venue">Preprint</div>
+        <p class="abstract">We introduce CAM-MCTS (Centralized Asynchronous Multi-Agent Monte Carlo Tree Search), a planning framework for collaborative object rearrangement in cluttered environments. CAM-MCTS enables multiple robots to coordinate manipulation actions while optimizing the overall task makespan. The method combines centralized planning with asynchronous execution so agents can begin new actions without waiting for global synchronization, reducing idle time and improving efficiency. The performance are verified in both simulation and real-robot systems.</p>
+        <a class="plink" href="https://arxiv.org/abs/2602.02411">[paper] →</a>
+      </div>
+    </div>
 
+    <div class="paper">
+      <div class="thumb"><img src="./images/MAS_OR_MCTS_example.gif" alt="Integrated Active Sensing"></div>
+      <div>
+        <div class="pnum">02</div>
+        <div class="ptitle">Integrating Active Sensing and Rearrangement Planning for Efficient Object Retrieval from Unknown, Confined, Cluttered Environments</div>
+        <div class="authors">Junyoung Kim, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
+        <div class="venue">Preprint</div>
+        <p class="abstract">We introduce an integrated framework that smartly combines multi-stage active sensing and MCTS-based retrieval planning for object retrieval in unknown, cluttered, confined environments. Our OR-MCTS planner relocates task-blocking objects while guiding sensing toward critical unseen regions. Experiments in simulation and real robots show improved success rate and efficiency over SOTA methods.</p>
+        <a class="plink" href="https://ieeexplore.ieee.org/abstract/document/11128147">[paper] →</a>
+      </div>
+    </div>
 
-		<!--Integrated Active Sensing-->
-			<tr>
-				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
-				<img src="./images/MAS_OR_MCTS_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
-				</td>
-				<td style='padding:2.5%;width:75%;vertical-align:middle'>
-					<h3>Integrating Active Sensing and Rearrangement Planning for Efficient Object Retrieval from Unknwon, Confined, Cluttered Environments</h3>
-					<br>
-					Junyoung Kim, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
-					<a href="https://ieeexplore.ieee.org/abstract/document/11128147">[paper]</a>
-					<p>
-							We introduce an integrated framework that smartly combines multi-stage active sensing and MCTS-based retrieval planning for object retrieval in unknown, cluttered, confined environments. Our OR-MCTS planner relocates task-blocking objects while guiding sensing toward critical unseen regions. Experiments in simulation and real robots show improved success rate and efficiency over SOTA methods.
-					</p>
-				</td>
-			</tr>
+    <div class="paper">
+      <div class="thumb"><img src="./images/POM_NeFT_example.gif" alt="POM"></div>
+      <div>
+        <div class="pnum">03</div>
+        <div class="ptitle">Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</div>
+        <div class="authors"><strong>Hanwen Ren*</strong>, Ahmed H. Qureshi</div>
+        <div class="venue">Arxiv</div>
+        <p class="abstract">In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object rearrangement instances of diverse difficulty levels.</p>
+        <a class="plink" href="https://arxiv.org/abs/2305.17175">[paper] →</a>
+      </div>
+    </div>
 
+    <div class="paper">
+      <div class="thumb"><img src="./images/NL_Active_Sensing_example.gif" alt="Language Guided Active Sensing"></div>
+      <div>
+        <div class="pnum">04</div>
+        <div class="ptitle">Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</div>
+        <div class="authors"><strong>Hanwen Ren*</strong>, Ahmed H. Qureshi</div>
+        <div class="venue">Arxiv</div>
+        <p class="abstract">In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object rearrangement instances of diverse difficulty levels.</p>
+        <a class="plink" href="https://arxiv.org/abs/2305.17175">[paper] →</a>
+      </div>
+    </div>
 
+    <div class="paper">
+      <div class="thumb"><img src="./images/MS_MCTS_example.gif" alt="MS-MCTS IROS 2024"></div>
+      <div>
+        <div class="pnum">05</div>
+        <div class="ptitle">Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</div>
+        <div class="authors"><strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
+        <div class="venue conf">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2024</div>
+        <p class="abstract">In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object rearrangement instances of diverse difficulty levels.</p>
+        <a class="plink" href="https://ieeexplore.ieee.org/abstract/document/10801607">[paper] →</a>
+      </div>
+    </div>
 
+    <div class="paper">
+      <div class="thumb"><img src="./images/Neural_Grasping_Exp1.gif" alt="Neural Rearrangement ICRA 2024"></div>
+      <div>
+        <div class="pnum">06</div>
+        <div class="ptitle">Neural Rearrangement Planning for Object Retrieval from Confined Spaces Perceivable by Robot's In-hand RGB-D Sensor</div>
+        <div class="authors"><strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
+        <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2024</div>
+        <p class="abstract">This paper presents a neural network-based object retrieval framework that efficiently performs rearrangement planning of unknown, arbitrary objects in confined spaces to retrieve the desired one. Our method demonstrates high performance by ensuring the relocation of non-target objects clear the way for the robot path homotopy to the given target object, thus significantly increasing the underlying motion planner's efficiency.</p>
+        <a class="plink" href="https://ieeexplore.ieee.org/abstract/document/10610092">[paper] →</a>
+      </div>
+    </div>
 
-		<!--POM_TODO-->
-			<tr>
-				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
-				<img src="./images/POM_NeFT_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
-				</td>
-				<td style='padding:2.5%;width:75%;vertical-align:middle'>
-					<h3>Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</h3>
-					<br>
-					<strong>Hanwen Ren*</strong>, Ahmed H. Qureshi<br>
-					<em>Arxiv</em><br>
-					<a href="https://arxiv.org/abs/2305.17175">paper</a>
-					<p>
-						In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality 
-						plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object
-						rearrangement instances of diverse difficulty levels.
-					</p>
-				</td>
-			</tr>
+    <div class="paper">
+      <div class="thumb"><img src="./images/Active_Sensing_example.gif" alt="Active Neural Sensing T-RO"></div>
+      <div>
+        <div class="pnum">07</div>
+        <div class="ptitle">Robot Active Neural Sensing and Planning in Unknown Cluttered Environments</div>
+        <div class="authors"><strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
+        <div class="venue conf">IEEE Transactions on Robotics, 39 (4), 2738–2750</div>
+        <p class="abstract">In this work, we present the active neural sensing approach that generates the kinematically feasible viewpoint sequences for the robot manipulator with an in-hand camera to gather the number of observations needed to reconstruct the underlying unknown cluttered environments. Our results exhibit high performance compared to traditional baselines regarding the number of viewpoints, scene coverage success rates, and planning time.</p>
+        <a class="plink" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10101696">[paper] →</a>
+      </div>
+    </div>
 
+    <div class="paper">
+      <div class="thumb"><img src="./images/Cograsp.gif" alt="CoGrasp ICRA 2023"></div>
+      <div>
+        <div class="pnum">08</div>
+        <div class="ptitle">Cograsp: 6-DOF Grasp Generation for Human-Robot Collaboration</div>
+        <div class="authors">Abhinav K. Keshari, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
+        <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2023</div>
+        <p class="abstract">In this paper, we propose a novel, deep neural network-based method called CoGrasp that enables robots to grasp various objects in a human-aware manner by contextualizing human preference. Our user study indicates that our approach allows safe, natural, and social-aware human-robot co-grasping experience.</p>
+        <a class="plink" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10160623">[paper] →</a>
+      </div>
+    </div>
 
-
-		<!--Language Guided Active Sensing Project_TODO-->
-			<tr>
-				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
-				<img src="./images/NL_Active_Sensing_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
-				</td>
-				<td style='padding:2.5%;width:75%;vertical-align:middle'>
-					<h3>Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</h3>
-					<br>
-					<strong>Hanwen Ren*</strong>, Ahmed H. Qureshi<br>
-					<em>Arxiv</em><br>
-					<a href="https://arxiv.org/abs/2305.17175">paper</a>
-					<p>
-						In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality 
-						plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object
-						rearrangement instances of diverse difficulty levels.
-					</p>
-				</td>
-			</tr>
-
-
-
-
-			<!--2D MS-MCTS Project-->
-			<tr>
-				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
-				<img src="./images/MS_MCTS_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
-				</td>
-				<td style='padding:2.5%;width:75%;vertical-align:middle'>
-					<h3>Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</h3>
-					<br>
-					<strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
-					<em>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2024<br>
-					<a href="https://ieeexplore.ieee.org/abstract/document/10801607">[paper]</a>
-					<p>
-						In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality 
-						plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object
-						rearrangement instances of diverse difficulty levels.
-					</p>
-				</td>
-			</tr>
-
-			<!--Neural Grasping Project-->
-			<tr>
-				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
-				<img src="./images/Neural_Grasping_Exp1.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
-				</td>
-				<td style='padding:2.5%;width:75%;vertical-align:middle'>
-					<h3>Neural Rearrangement Planning for Object Retrieval from Confined Spaces Perceivable by Robot's In-hand RGB-D Sensor</h3>
-					<br>
-					<strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
-					<em>IEEE International Conference on Robotics and Automation (ICRA)</em>, 2024<br>
-					<a href="https://ieeexplore.ieee.org/abstract/document/10610092">[paper]</a>
-					<p>
-						This paper presents a neural network-based object retrieval framework that efficiently performs rearrangement planning of unknown, arbitrary objects in confined spaces to 
-						retrieve the desired one. Our method demonstrates high performance by ensuring the relocation of non-target objects clear the way for the robot path homotopy to the given 
-						target object, thus significantly increasing the underlying motion planner's efficiency.
-					</p>
-				</td>
-			</tr>
-
-      <!--Active Neual Sensing Project-->
-			<tr>
-				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
-				<img src="./images/Active_Sensing_example.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
-				</td>
-				<td style='padding:2.5%;width:75%;vertical-align:middle'>
-					<h3>Robot Active Neural Sensing and Planning in Unknwon Cluttered Environments</h3>
-					<br>
-					<strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
-					<em>IEEE Transactions on Robotics</em> 39 (4), 2738-2750<br>
-					<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10101696">[paper]</a>
-					<p>
-						In this work, we present the active neural sensing approach that generates the kinematically feasible viewpoint sequences for the robot manipulator 
-						with an in-hand camera to gather the number number of observations needed to reconstruct the underlying unknown cluttered environments. Our results
-						exhibit high performance compared to traditional baselines regarding the number of viewpoints, scene coverage success rates, and planning time.
-					</p>
-				</td>
-			</tr>
-
-			<!--Cograsp Project-->
-			<tr>
-				<td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px;">
-				<img src="./images/Cograsp.gif" alt="Active Neural Sensing" style="width:auto;height:auto;max-width:100%;">
-				</td>
-				<td style='padding:2.5%;width:75%;vertical-align:middle'>
-					<h3>Cograsp: 6-DOF Grasp Generation for Human-Robot Collaboration</h3>
-					<br>
-					Abhinav K. Keshari, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi<br>
-					<em>IEEE International Conference on Robotics and Automation (ICRA)</em>, 2023<br>
-					<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10160623">[paper]</a>
-					<p>
-						In this paper, we propose a novel, deep neural network-based method called CoGrasp that enables robots to grasp various objects in a human-aware
-						manner by contextualizing human preference. Our user study indicates that our approach allows safe, natural, and social-aware human-robot co-grasping experience.
-					</p>
-				</td>
-			</tr>
-
-		</tbody>
-	</table>
-</td>
-</tr>
-</table>
-
-
+  </div>
+</div>
 </body>
 </html>
-
