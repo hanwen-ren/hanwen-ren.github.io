@@ -21,6 +21,7 @@
       --accent:    #7a3520;
       --accentlt:  #b86b4e;
       --rule:      #dbd3c6;
+      --surf:      #eee9e0;
       --display:   'Playfair Display', Georgia, serif;
       --body:      'Lora', Georgia, serif;
       --mono:      'JetBrains Mono', monospace;
@@ -35,18 +36,56 @@
       line-height: 1.78;
       font-weight: 400;
     }
-    /* thick top rule */
     body::before {
       content: '';
       display: block;
       height: 5px;
       background: linear-gradient(90deg, var(--accent) 0%, var(--accentlt) 50%, var(--accent) 100%);
     }
-
     a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s; }
     a:hover { border-color: var(--accentlt); }
-
     .page { max-width: 960px; margin: 0 auto; padding: 60px 28px 110px; }
+
+    /* ── NEWS TICKER ── */
+    .news-bar {
+      background: var(--surf);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin-top: 18px;
+      margin-bottom: 16px;
+    }
+    .news-bar-label {
+      font-family: var(--mono);
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .news-items { display: flex; flex-direction: column; gap: 7px; }
+    .news-item {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      font-size: .84rem;
+      color: var(--ink2);
+      line-height: 1.5;
+    }
+    .news-date {
+      font-family: var(--mono);
+      font-size: .68rem;
+      color: var(--ink3);
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 70px;
+    }
+    .news-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accentlt);
+      flex-shrink: 0;
+      margin-bottom: 2px;
+    }
 
     /* ── HERO ── */
     .hero {
@@ -61,14 +100,12 @@
     }
     .photo-wrap { position: relative; }
     .photo-wrap img {
-      width: 100%;
-      display: block;
+      width: 100%; display: block;
       border: 1px solid var(--rule);
       filter: sepia(10%) contrast(1.04);
       transition: filter .4s;
     }
     .photo-wrap:hover img { filter: sepia(0%) contrast(1.07); }
-    /* offset decorative border */
     .photo-wrap::after {
       content: '';
       position: absolute;
@@ -78,7 +115,6 @@
       z-index: -1;
       pointer-events: none;
     }
-
     .hero-info .kicker {
       font-family: var(--mono);
       font-size: .7rem;
@@ -101,14 +137,63 @@
       font-size: .75rem;
       color: var(--ink3);
       letter-spacing: .05em;
-      margin: 18px 0 14px;
+      margin: 16px 0 12px;
     }
     .email-line strong { color: var(--ink2); }
+
+    /* hero buttons row */
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .btn-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .08em;
+      color: var(--bg);
+      background: var(--accent);
+      border: none;
+      border-radius: 5px;
+      padding: 7px 14px;
+      cursor: pointer;
+      transition: background .2s, opacity .2s;
+      text-decoration: none;
+    }
+    .btn-cv:hover { background: var(--accentlt); border-color: transparent; }
+
     .socials { display: flex; gap: 14px; }
     .socials a { color: var(--ink3); border: none; display: flex; transition: color .25s; }
     .socials a:hover { color: var(--accent); }
 
-    /* ── RESEARCH INTRO ── */
+    /* ── RESEARCH INTERESTS PILLS ── */
+    .interests-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .interest-pill {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .06em;
+      color: var(--accent);
+      background: var(--surf);
+      border: 1px solid var(--accentlt);
+      border-radius: 20px;
+      padding: 5px 14px;
+      opacity: .85;
+      transition: opacity .2s;
+    }
+    .interest-pill:hover { opacity: 1; }
+
+    /* ── SECTION HEADERS ── */
     .sec-label {
       font-family: var(--mono);
       font-size: .68rem;
@@ -131,15 +216,64 @@
       color: var(--ink2);
       max-width: 660px;
       line-height: 1.82;
-      margin-bottom: 54px;
+      margin-bottom: 28px;
       text-align: center;
       margin-left: auto;
       margin-right: auto;
     }
 
+    /* section divider used for non-paper sections */
+    .section {
+      padding-top: 52px;
+      border-top: 1px solid var(--rule);
+      margin-top: 52px;
+      animation: rise .6s ease both;
+    }
+    .section-heading {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .skill-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .skill-cat {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      padding-top: 4px;
+      text-align: right;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag {
+      font-family: var(--mono);
+      font-size: .72rem;
+      background: var(--surf);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 3px 9px;
+      color: var(--ink2);
+    }
+
     /* ── PAPERS ── */
     .papers { display: flex; flex-direction: column; }
-
     .paper {
       display: grid;
       grid-template-columns: 380px 1fr;
@@ -157,69 +291,99 @@
     .paper:nth-child(6){animation-delay:.47s}
     .paper:nth-child(7){animation-delay:.54s}
     .paper:nth-child(8){animation-delay:.61s}
-
-    .thumb { overflow: hidden; background: var(--rule); }
+    .thumb { overflow: hidden; background: var(--rule); border: 2px solid var(--ink); }
     .thumb img {
       width: 100%; display: block;
       filter: saturate(.8);
       transition: transform .5s ease, filter .4s;
     }
     .paper:hover .thumb img { transform: scale(1.05); filter: saturate(1.05); }
-
-    .pnum {
-      font-family: var(--mono);
-      font-size: .66rem;
-      letter-spacing: .1em;
-      color: var(--ink3);
-      margin-bottom: 7px;
-    }
-    .ptitle {
-      font-family: var(--display);
-      font-size: 1.02rem;
-      font-weight: 700;
-      line-height: 1.33;
-      margin-bottom: 7px;
-    }
-    .authors {
-      font-size: .8rem;
-      font-style: italic;
-      color: var(--ink3);
-      margin-bottom: 3px;
-    }
+    .pnum { font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; color: var(--ink3); margin-bottom: 7px; }
+    .ptitle { font-family: var(--display); font-size: 1.02rem; font-weight: 700; line-height: 1.33; margin-bottom: 7px; }
+    .authors { font-size: .8rem; font-style: italic; color: var(--ink3); margin-bottom: 3px; }
     .authors strong { color: var(--accent); font-style: normal; font-weight: 600; }
-    .venue {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .04em;
-      color: var(--ink2);
-      margin-bottom: 10px;
-    }
+    .venue { font-family: var(--mono); font-size: .68rem; letter-spacing: .04em; color: var(--ink2); margin-bottom: 10px; }
     .venue.conf { color: var(--accent); }
-    .abstract {
-      font-size: .83rem;
-      color: var(--ink2);
-      line-height: 1.72;
-      margin-bottom: 11px;
-    }
+    .abstract { font-size: .83rem; color: var(--ink2); line-height: 1.72; margin-bottom: 11px; }
     .plink {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .08em;
-      color: var(--accent);
-      border-bottom: 1px solid var(--accentlt);
-      padding-bottom: 1px;
-      transition: opacity .2s;
+      font-family: var(--mono); font-size: .68rem; letter-spacing: .08em;
+      color: var(--accent); border-bottom: 1px solid var(--accentlt);
+      padding-bottom: 1px; transition: opacity .2s;
     }
     .plink:hover { opacity: .65; }
 
-    @keyframes rise { from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:translateY(0)} }
-
-    @media(max-width:780px){
-      .paper{grid-template-columns:1fr}
+    /* ── TALKS ── */
+    .talks { display: flex; flex-direction: column; gap: 0; max-width: 720px; margin: 0 auto; }
+    .talk {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 16px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
     }
+    .talk-date { font-family: var(--mono); font-size: .7rem; color: var(--ink3); letter-spacing: .04em; }
+    .talk-body { font-size: .88rem; color: var(--ink2); }
+    .talk-body strong { color: var(--ink); font-style: normal; font-weight: 500; }
+
+    /* ── TEACHING ── */
+    .awards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .award-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .83rem;
+      color: var(--accent);
+      background: var(--surf);
+      border: 1px solid var(--accentlt);
+      border-radius: 6px;
+      padding: 6px 14px;
+    }
+    .teaching-rows { display: flex; flex-direction: column; gap: 0; max-width: 720px; margin: 0 auto; }
+    .teaching-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .teaching-title { font-size: .88rem; color: var(--ink2); }
+    .teaching-title strong { color: var(--ink); font-weight: 500; font-style: normal; }
+    .teaching-role {
+      font-family: var(--mono);
+      font-size: .67rem;
+      color: var(--ink3);
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    /* ── SERVICES ── */
+    .service-rows { display: flex; flex-direction: column; gap: 0; max-width: 720px; margin: 0 auto; }
+    .service-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .service-name { font-size: .88rem; color: var(--ink2); }
+    .service-years { font-family: var(--mono); font-size: .68rem; color: var(--ink3); letter-spacing: .04em; }
+
+    @keyframes rise { from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:translateY(0)} }
+    @media(max-width:780px){ .paper{grid-template-columns:1fr} }
     @media(max-width:620px){
       .hero{grid-template-columns:1fr}
       .photo-wrap{max-width:155px}
+      .skill-row{grid-template-columns:1fr}
+      .skill-cat{text-align:left}
     }
   </style>
 </head>
@@ -239,122 +403,285 @@
       <p>I am a Ph.D. student in the <a href="https://www.cs.purdue.edu">Department of Computer Science</a> at <a href="https://www.purdue.edu">Purdue University</a>. Currently, I am working as a Research Assistant at Purdue <a href="https://corallab.net">Cognitive Robot Autonomy &amp; Learning (CoRAL) Lab</a> directed by Prof. <a href="https://qureshiahmed.github.io">Ahmed H. Qureshi</a>.</p>
       <p>Before coming to Purdue, I got my B.S. from the <a href="https://www.ji.sjtu.edu.cn">UM-SJTU Joint Institute</a> at <a href="https://en.sjtu.edu.cn">Shanghai Jiao Tong University</a> and Sc.M. from the <a href="https://engineering.brown.edu">Electrical Sciences &amp; Computer Engineering Department</a> at <a href="https://www.brown.edu">Brown University</a>.</p>
       <div class="email-line"><strong>ren221</strong> AT purdue DOT edu</div>
-      <div class="socials">
-        <a href="https://google.com" target="_blank"><ion-icon size="large" name="school-outline"></ion-icon></a>
-        <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-linkedin"></ion-icon></a>
-        <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-github"></ion-icon></a>
-        <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-youtube"></ion-icon></a>
-        <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-instagram"></ion-icon></a>
+      <div class="news-bar">
+        <div class="news-bar-label">Recent News</div>
+        <div class="news-items">
+          <div class="news-item">
+            <span class="news-date">May 2026</span>
+            <span class="news-dot"></span>
+            <span>Starting a Research Internship at <strong>United Imaging Intelligence America</strong>.</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">Spring 2026</span>
+            <span class="news-dot"></span>
+            <span>Invited talk at <strong>Johns Hopkins University</strong> — 601.495 Introduction to Robot Learning.</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">Spring 2026</span>
+            <span class="news-dot"></span>
+            <span>Invited talk at <strong>Purdue University</strong> — CS558 Robot Learning.</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026</span>
+            <span class="news-dot"></span>
+            <span>Paper accepted at <strong>ICRA 2026</strong> — Multi-Agent Monte Carlo Tree Search for Makespan-Efficient Object Rearrangement.</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025</span>
+            <span class="news-dot"></span>
+            <span>Two papers accepted at <strong>ICRA 2025</strong> and <strong>IROS 2025</strong>.</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn-cv" href="./CV_HR.pdf" target="_blank">
+          <ion-icon name="document-text-outline"></ion-icon> Download CV
+        </a>
+        <div class="socials">
+          <a href="https://google.com" target="_blank"><ion-icon size="large" name="school-outline"></ion-icon></a>
+          <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-linkedin"></ion-icon></a>
+          <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-github"></ion-icon></a>
+          <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-youtube"></ion-icon></a>
+          <a href="https://google.com" target="_blank"><ion-icon size="large" name="logo-instagram"></ion-icon></a>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- RESEARCH -->
+  <!-- RESEARCH INTERESTS -->
   <div class="sec-label">Research</div>
   <div class="sec-title">Intelligent Robot Interaction &amp; Planning</div>
   <p class="research-blurb">My research explores how robots can intelligently interact with complex environments, focusing on active visual perception, object rearrangement planning, and object manipulation in cluttered environments. I develop learning- and planning-based methods that allow robots to reason about their surroundings and perform multi-step manipulation tasks efficiently.</p>
+  <div class="interests-wrap">
+    <span class="interest-pill">Embodied Intelligence</span>
+    <span class="interest-pill">Robot Active Visual Perception</span>
+    <span class="interest-pill">Task &amp; Motion Planning</span>
+    <span class="interest-pill">Multi-Agent Systems</span>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="sec-label">Technical Skills</div>
+    <div class="sec-title" style="margin-bottom:24px">Tools &amp; Technologies</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <div class="skill-cat">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">CUDA</span>
+          <span class="skill-tag">OpenCL</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">ML &amp; AI</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">RL</span>
+          <span class="skill-tag">MCTS</span>
+          <span class="skill-tag">VLA / VLM</span>
+          <span class="skill-tag">Diffusion Models</span>
+          <span class="skill-tag">3DGS</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Robotics</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ROS / ROS2</span>
+          <span class="skill-tag">MuJoCo</span>
+          <span class="skill-tag">Isaac Gym</span>
+          <span class="skill-tag">SLAM</span>
+          <span class="skill-tag">Task &amp; Motion Planning</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Perception</div>
+        <div class="skill-tags">
+          <span class="skill-tag">RGB-D</span>
+          <span class="skill-tag">Point Clouds</span>
+          <span class="skill-tag">Segmentation</span>
+          <span class="skill-tag">Active Sensing</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- PUBLICATIONS -->
-  <div class="sec-label" style="margin-bottom:18px">Publications</div>
-  <div class="papers">
+  <div class="section">
+    <div class="sec-label" style="margin-bottom:18px">Publications</div>
+    <div class="papers">
 
-    <div class="paper">
-      <div class="thumb"><img src="./images/CAM_MCTS_example.gif" alt="CAM-MCTS"></div>
-      <div>
-        <div class="pnum">01</div>
-        <div class="ptitle">Multi-Agent Monte Carlo Tree Search for Makespan-Efficient Object Rearrangement in Cluttered Spaces</div>
-        <div class="authors"><strong>Hanwen Ren</strong>, Junyoung Kim, Aathman Tharmasanthiran and Ahmed H. Qureshi</div>
-        <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2026</div>
-        <p class="abstract">We introduce CAM-MCTS (Centralized Asynchronous Multi-Agent Monte Carlo Tree Search), a planning framework for collaborative object rearrangement in cluttered environments. CAM-MCTS enables multiple robots to coordinate manipulation actions while optimizing the overall task makespan. The method combines centralized planning with asynchronous execution so agents can begin new actions without waiting for global synchronization, reducing idle time and improving efficiency. The performance are verified in both simulation and real-robot systems.</p>
-        <a class="plink" href="https://arxiv.org/abs/2602.02411">[paper] →</a>
+      <div class="paper">
+        <div class="thumb"><img src="./images/CAM_MCTS_example.gif" alt="CAM-MCTS"></div>
+        <div>
+          <div class="pnum">01</div>
+          <div class="ptitle">Multi-Agent Monte Carlo Tree Search for Makespan-Efficient Object Rearrangement in Cluttered Spaces</div>
+          <div class="authors"><strong>Hanwen Ren</strong>, Junyoung Kim, Aathman Tharmasanthiran and Ahmed H. Qureshi</div>
+          <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2026</div>
+          <p class="abstract">We introduce CAM-MCTS (Centralized Asynchronous Multi-Agent Monte Carlo Tree Search), a planning framework for collaborative object rearrangement in cluttered environments. CAM-MCTS enables multiple robots to coordinate manipulation actions while optimizing the overall task makespan. The method combines centralized planning with asynchronous execution so agents can begin new actions without waiting for global synchronization, reducing idle time and improving efficiency. The performance are verified in both simulation and real-robot systems.</p>
+          <a class="plink" href="https://arxiv.org/abs/2602.02411">[paper] →</a>
+        </div>
       </div>
-    </div>
 
-    <div class="paper">
-      <div class="thumb"><img src="./images/MAS_OR_MCTS_example.gif" alt="Integrated Active Sensing"></div>
-      <div>
-        <div class="pnum">02</div>
-        <div class="ptitle">Integrating Active Sensing and Rearrangement Planning for Efficient Object Retrieval from Unknown, Confined, Cluttered Environments</div>
-        <div class="authors">Junyoung Kim*, <strong>Hanwen Ren*</strong>, Ahmed H. Qureshi</div>
-        <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2025</div>
-        <p class="abstract">We introduce an integrated framework that smartly combines multi-stage active sensing and MCTS-based retrieval planning for object retrieval in unknown, cluttered, confined environments. Our OR-MCTS planner relocates task-blocking objects while guiding sensing toward critical unseen regions. Experiments in simulation and real robots show improved success rate and efficiency over SOTA methods.</p>
-        <a class="plink" href="https://ieeexplore.ieee.org/abstract/document/11128147">[paper] →</a>
+      <div class="paper">
+        <div class="thumb"><img src="./images/MAS_OR_MCTS_example.gif" alt="Integrated Active Sensing"></div>
+        <div>
+          <div class="pnum">02</div>
+          <div class="ptitle">Integrating Active Sensing and Rearrangement Planning for Efficient Object Retrieval from Unknown, Confined, Cluttered Environments</div>
+          <div class="authors">Junyoung Kim*, <strong>Hanwen Ren*</strong>, Ahmed H. Qureshi</div>
+          <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2025</div>
+          <p class="abstract">We introduce an integrated framework that smartly combines multi-stage active sensing and MCTS-based retrieval planning for object retrieval in unknown, cluttered, confined environments. Our OR-MCTS planner relocates task-blocking objects while guiding sensing toward critical unseen regions. Experiments in simulation and real robots show improved success rate and efficiency over SOTA methods.</p>
+          <a class="plink" href="https://ieeexplore.ieee.org/abstract/document/11128147">[paper] →</a>
+        </div>
       </div>
-    </div>
 
-    <div class="paper">
-      <div class="thumb"><img src="./images/POM_NeFT_example.gif" alt="POM"></div>
-      <div>
-        <div class="pnum">03</div>
-        <div class="ptitle">Physics-informed Neural Time Fields for Prehensile Object Manipulation`</div>
-        <div class="authors"><strong>Hanwen Ren*</strong>, Ruiqi Ni, Ahmed H. Qureshi</div>
-        <div class="venue conf">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2025</div>
-				<p class="abstract">POM-NeTF (Prehensile Object Manipulation Neural Time Fields) is a physics-informed neural framework that enables robots to generate efficient object manipulation trajectories without expert demonstrations or trial-and-error learning. By directly solving the Eikonal equation through neural time fields and introducing a computationally efficient Dirichlet energy formulation, POM-NeTF learns manipulation skills that generalize across diverse objects and cluttered environments. The resulting framework supports multimodal manipulation with adaptive regrasping and achieves fast planning, high success rates, and strong real-world performance in confined environments.</p>
-        <a class="plink" href="https://arxiv.org/abs/2305.17175">[paper] →</a>
+      <div class="paper">
+        <div class="thumb"><img src="./images/POM_NeFT_example.gif" alt="POM NeTF"></div>
+        <div>
+          <div class="pnum">03</div>
+          <div class="ptitle">Physics-informed Neural Time Fields for Prehensile Object Manipulation</div>
+          <div class="authors"><strong>Hanwen Ren</strong>, Ruiqi Ni, Ahmed H. Qureshi</div>
+          <div class="venue conf">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2025</div>
+          <p class="abstract">POM-NeTF is a physics-informed neural framework that enables robots to generate efficient object manipulation trajectories without expert demonstrations or trial-and-error learning. By directly solving the Eikonal equation through neural time fields and introducing a computationally efficient Dirichlet energy formulation, POM-NeTF learns manipulation skills that generalize across diverse objects and cluttered environments, supporting multimodal manipulation with adaptive regrasping.</p>
+          <a class="plink" href="https://arxiv.org/abs/2305.17175">[paper] →</a>
+        </div>
       </div>
-    </div>
 
-    <div class="paper">
-      <div class="thumb"><img src="./images/NL_Active_Sensing_example.gif" alt="Language Guided Active Sensing"></div>
-      <div>
-        <div class="pnum">04</div>
-        <div class="ptitle">Language-guided Active Sensing of Confined, Cluttered Environments via Object Rearrangement Planning</div>
-        <div class="authors">Weihan Cheng, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
-        <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2024</div>
-				<p class="abstract">In this work, we propose the first language-guided active sensing framework for confined, cluttered environments, enabling robots to perceive user-specified regions of interest through intelligent object manipulation. Our approach grounds natural language instructions in the environment, plans informative viewpoints, and iteratively rearranges view-blocking objects to achieve dense perception of otherwise occluded areas. We demonstrate the effectiveness of our method in both simulation and real-world cabinet-like environments, showing improved sensing performance over existing active perception approaches.</p>
-        <a class="plink" href="https://arxiv.org/abs/2305.17175">[paper] →</a>
+      <div class="paper">
+        <div class="thumb"><img src="./images/NL_Active_Sensing_example.gif" alt="Language Guided Active Sensing"></div>
+        <div>
+          <div class="pnum">04</div>
+          <div class="ptitle">Language-guided Active Sensing of Confined, Cluttered Environments via Object Rearrangement Planning</div>
+          <div class="authors">Weihan Cheng, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
+          <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2024</div>
+          <p class="abstract">We propose the first language-guided active sensing framework for confined, cluttered environments, enabling robots to perceive user-specified regions of interest through intelligent object manipulation. Our approach grounds natural language instructions in the environment, plans informative viewpoints, and iteratively rearranges view-blocking objects to achieve dense perception of otherwise occluded areas.</p>
+          <a class="plink" href="https://arxiv.org/abs/2305.17175">[paper] →</a>
+        </div>
       </div>
-    </div>
 
-    <div class="paper">
-      <div class="thumb"><img src="./images/MS_MCTS_example.gif" alt="MS-MCTS IROS 2024"></div>
-      <div>
-        <div class="pnum">05</div>
-        <div class="ptitle">Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</div>
-        <div class="authors"><strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
-        <div class="venue conf">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2024</div>
-        <p class="abstract">In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object rearrangement instances of diverse difficulty levels.</p>
-        <a class="plink" href="https://ieeexplore.ieee.org/abstract/document/10801607">[paper] →</a>
+      <div class="paper">
+        <div class="thumb"><img src="./images/MS_MCTS_example.gif" alt="MS-MCTS IROS 2024"></div>
+        <div>
+          <div class="pnum">05</div>
+          <div class="ptitle">Multi-Stage Monte Carlo Tree Search for Non-Monotone Object Rearrangement Planning in Narrow Confined Environments</div>
+          <div class="authors"><strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
+          <div class="venue conf">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2024</div>
+          <p class="abstract">In this work, we propose a Multi-Stage Monte Carlo Tree Search (MS-MCTS) method leveraging an intelligent subgoal-focused tree expansion algorithm to find high-quality plans for complex non-monotone object rearrangement planning problems in confined environments. Our approach results in near-optimal solutions for various object rearrangement instances of diverse difficulty levels.</p>
+          <a class="plink" href="https://ieeexplore.ieee.org/abstract/document/10801607">[paper] →</a>
+        </div>
       </div>
-    </div>
 
-    <div class="paper">
-      <div class="thumb"><img src="./images/Neural_Grasping_Exp1.gif" alt="Neural Rearrangement ICRA 2024"></div>
-      <div>
-        <div class="pnum">06</div>
-        <div class="ptitle">Neural Rearrangement Planning for Object Retrieval from Confined Spaces Perceivable by Robot's In-hand RGB-D Sensor</div>
-        <div class="authors"><strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
-        <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2024</div>
-        <p class="abstract">This paper presents a neural network-based object retrieval framework that efficiently performs rearrangement planning of unknown, arbitrary objects in confined spaces to retrieve the desired one. Our method demonstrates high performance by ensuring the relocation of non-target objects clear the way for the robot path homotopy to the given target object, thus significantly increasing the underlying motion planner's efficiency.</p>
-        <a class="plink" href="https://ieeexplore.ieee.org/abstract/document/10610092">[paper] →</a>
+      <div class="paper">
+        <div class="thumb"><img src="./images/Neural_Grasping_Exp1.gif" alt="Neural Rearrangement ICRA 2024"></div>
+        <div>
+          <div class="pnum">06</div>
+          <div class="ptitle">Neural Rearrangement Planning for Object Retrieval from Confined Spaces Perceivable by Robot's In-hand RGB-D Sensor</div>
+          <div class="authors"><strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
+          <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2024</div>
+          <p class="abstract">This paper presents a neural network-based object retrieval framework that efficiently performs rearrangement planning of unknown, arbitrary objects in confined spaces to retrieve the desired one. Our method demonstrates high performance by ensuring the relocation of non-target objects clear the way for the robot path homotopy to the given target object, thus significantly increasing the underlying motion planner's efficiency.</p>
+          <a class="plink" href="https://ieeexplore.ieee.org/abstract/document/10610092">[paper] →</a>
+        </div>
       </div>
-    </div>
 
-    <div class="paper">
-      <div class="thumb"><img src="./images/Active_Sensing_example.gif" alt="Active Neural Sensing T-RO"></div>
-      <div>
-        <div class="pnum">07</div>
-        <div class="ptitle">Robot Active Neural Sensing and Planning in Unknown Cluttered Environments</div>
-        <div class="authors"><strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
-        <div class="venue conf">IEEE Transactions on Robotics, 39 (4), 2738–2750</div>
-        <p class="abstract">In this work, we present the active neural sensing approach that generates the kinematically feasible viewpoint sequences for the robot manipulator with an in-hand camera to gather the number of observations needed to reconstruct the underlying unknown cluttered environments. Our results exhibit high performance compared to traditional baselines regarding the number of viewpoints, scene coverage success rates, and planning time.</p>
-        <a class="plink" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10101696">[paper] →</a>
+      <div class="paper">
+        <div class="thumb"><img src="./images/Active_Sensing_example.gif" alt="Active Neural Sensing T-RO"></div>
+        <div>
+          <div class="pnum">07</div>
+          <div class="ptitle">Robot Active Neural Sensing and Planning in Unknown Cluttered Environments</div>
+          <div class="authors"><strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
+          <div class="venue conf">IEEE Transactions on Robotics, 39 (4), 2738–2750, 2023</div>
+          <p class="abstract">In this work, we present the active neural sensing approach that generates the kinematically feasible viewpoint sequences for the robot manipulator with an in-hand camera to gather the number of observations needed to reconstruct the underlying unknown cluttered environments. Our results exhibit high performance compared to traditional baselines regarding the number of viewpoints, scene coverage success rates, and planning time.</p>
+          <a class="plink" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10101696">[paper] →</a>
+        </div>
       </div>
-    </div>
 
-    <div class="paper">
-      <div class="thumb"><img src="./images/Cograsp.gif" alt="CoGrasp ICRA 2023"></div>
-      <div>
-        <div class="pnum">08</div>
-        <div class="ptitle">Cograsp: 6-DOF Grasp Generation for Human-Robot Collaboration</div>
-        <div class="authors">Abhinav K. Keshari, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
-        <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2023</div>
-        <p class="abstract">In this paper, we propose a novel, deep neural network-based method called CoGrasp that enables robots to grasp various objects in a human-aware manner by contextualizing human preference. Our user study indicates that our approach allows safe, natural, and social-aware human-robot co-grasping experience.</p>
-        <a class="plink" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10160623">[paper] →</a>
+      <div class="paper">
+        <div class="thumb"><img src="./images/Cograsp.gif" alt="CoGrasp ICRA 2023"></div>
+        <div>
+          <div class="pnum">08</div>
+          <div class="ptitle">Cograsp: 6-DOF Grasp Generation for Human-Robot Collaboration</div>
+          <div class="authors">Abhinav K. Keshari, <strong>Hanwen Ren</strong>, Ahmed H. Qureshi</div>
+          <div class="venue conf">IEEE International Conference on Robotics and Automation (ICRA), 2023</div>
+          <p class="abstract">In this paper, we propose a novel, deep neural network-based method called CoGrasp that enables robots to grasp various objects in a human-aware manner by contextualizing human preference. Our user study indicates that our approach allows safe, natural, and social-aware human-robot co-grasping experience.</p>
+          <a class="plink" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10160623">[paper] →</a>
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
+
+  <!-- INVITED TALKS -->
+  <div class="section">
+    <div class="sec-label">Invited Talks</div>
+    <div class="sec-title" style="margin-bottom:24px">Lectures &amp; Presentations</div>
+    <div class="talks">
+      <div class="talk">
+        <div class="talk-date">Spr 2026</div>
+        <div class="talk-body"><strong>Johns Hopkins University</strong> — 601.495(E) Introduction to Robot Learning</div>
+      </div>
+      <div class="talk">
+        <div class="talk-date">Spr 2026</div>
+        <div class="talk-body"><strong>Purdue University</strong> — CS558 Robot Learning</div>
+      </div>
+      <div class="talk">
+        <div class="talk-date">Fall 2025</div>
+        <div class="talk-body"><strong>Purdue University</strong> — CS458 Introduction to Robotics</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEACHING -->
+  <div class="section">
+    <div class="sec-label">Teaching</div>
+    <div class="sec-title" style="margin-bottom:18px">Teaching Experience &amp; Awards</div>
+    <div class="awards-row">
+      <div class="award-chip"><ion-icon name="trophy-outline"></ion-icon> Raymond Boyce Graduate Teaching Award, 2024</div>
+      <div class="award-chip"><ion-icon name="ribbon-outline"></ion-icon> CS Department Graduate Teaching Award, Fall 2023</div>
+    </div>
+    <div class="teaching-rows">
+      <div class="teaching-row">
+        <div class="teaching-title"><strong>CS 558</strong> — Robot Learning (Spring 2023, Spring 2026)</div>
+        <div class="teaching-role">Head TA</div>
+      </div>
+      <div class="teaching-row">
+        <div class="teaching-title"><strong>CS 458</strong> — Introduction to Robotics (Fall 2022)</div>
+        <div class="teaching-role">Head TA</div>
+      </div>
+      <div class="teaching-row">
+        <div class="teaching-title"><strong>CS 182</strong> — Introduction to Computer Science (Fall 2021, Spr 2022, Sum 2022, Fall 2025)</div>
+        <div class="teaching-role">Head TA</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section">
+    <div class="sec-label">Service</div>
+    <div class="sec-title" style="margin-bottom:24px">Academic Reviewing</div>
+    <div class="service-rows">
+      <div class="service-row">
+        <div class="service-name">IEEE Transactions on Robotics (T-RO)</div>
+        <div class="service-years">2025, 2026</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">IEEE International Conference on Robotics and Automation (ICRA)</div>
+        <div class="service-years">2024, 2025, 2026</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">IEEE Robotics &amp; Automation Letters (RA-L)</div>
+        <div class="service-years">2025</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</div>
+        <div class="service-years">2024, 2025, 2026</div>
+      </div>
+      <div class="service-row">
+        <div class="service-name">Conference on Robot Learning (CoRL)</div>
+        <div class="service-years">2023, 2024</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 </body>
 </html>
